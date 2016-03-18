@@ -1,0 +1,3 @@
+{ "content" : "ggg"}
+
+ curl -XPOST http://localhost:9200/newindex/_search&query=0x5ef275aa19a98bfb6b614662a16425fb&fields=_id
