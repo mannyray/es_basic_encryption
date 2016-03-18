@@ -19,5 +19,5 @@ g++ -o encrypt encryptFile.cc -L/usr/lib/crypto++ -lcrypto++
 for line in $(find . -name "*.txt" -not -name "encrypted*.txt"); do 
 	 line=${line:2}
 	 echo $line
-     ./encrypt yourKey "$line"
+     ./encrypt mykey "$line"
 done

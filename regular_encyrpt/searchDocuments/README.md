@@ -35,4 +35,7 @@ Here is a sample query/output that can be used after your encrypted documents ha
 
 The query returns "_id" # which isn't the actual file name as you may notice. However if you analyze the code that is used to upload the original encrypted files (upload.sh), then one will notice that it is done in alphabetical order. The nth file you upload will correspond to the nth _id. This mapping can be done at the client side for more meaningful output.
 
+The provided code translateKey.cc will be able to translate user search words into the encrypted versions that can be used to search elasticsearch. Make sure you to the same key.
+
+(compiled with g++ -o encrypt encryptFile.cc -L/usr/lib/crypto++ -lcrypto++) ~ make sure crypto++ library is located in correct location.
 

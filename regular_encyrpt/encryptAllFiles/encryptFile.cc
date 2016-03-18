@@ -35,6 +35,7 @@ int main(int argc, char* argv[]) {
     memset( iv, 0x00, CryptoPP::AES::BLOCKSIZE );
 
 		std::string filename = argv[2];
+		std::string user_key = argv[1];
 		std::cout<<"Encrypting the file: "<<filename<<std::endl;
 
 		std::ifstream myfile;
@@ -62,7 +63,7 @@ int main(int argc, char* argv[]) {
 		  //
 		  // Create Cipher Text
 		  //
-		  CryptoPP::AES::Encryption aesEncryption(key, CryptoPP::AES::DEFAULT_KEYLENGTH);
+		  CryptoPP::AES::Encryption aesEncryption((byte*)user_key.c_str(), CryptoPP::AES::DEFAULT_KEYLENGTH);
 		  CryptoPP::CBC_Mode_ExternalCipher::Encryption cbcEncryption( aesEncryption, iv );
 
 		  CryptoPP::StreamTransformationFilter stfEncryptor(cbcEncryption, new CryptoPP::StringSink( ciphertext ) );
