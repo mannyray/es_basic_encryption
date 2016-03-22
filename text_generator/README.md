@@ -1,0 +1,1 @@
+If you are looking to fill your elasticsearch indexes with text files and don't want to spend a few days downloading them from project gutenberg, then you can generate them yourselves using the following script.
