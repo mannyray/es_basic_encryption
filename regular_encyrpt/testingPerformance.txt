@@ -1,10 +1,20 @@
-Testing performance of regular_encrypt vs no encryption.
-
-The command 'wget -nd -r -l 10 -A.txt ftp://ftp.ibiblio.org/pub/docs/books/gutenberg/' was used to download a large sample of text files whos total size was 44M ('du -sh * -c').
-
+Data was generated using the code from ../text_generator (./a.out dd/mywords.txt 2000 100000) to give about 1.8G of generated data (du -sh * -c). 
 
 ~~~~~~~~~~~~~~~~~~~~~
 regular_encrypt:
 ~~~~~~~~~~~~~~~~~~~~~
 
-In addition to storing the original text files on the client side, the client must generate the encrypted text files to store on the server.
+In addition to storing the original text files on the client side, the client must generate the encrypted text files to store on the server. The text encryption was timed to the following:
+
+
+real	24m7.172s
+user	20m20.564s
+sys	0m17.848s
+
+and expanded the data to 8.1G (6.3 gb additional).
+
+The upload took about
+real	44m44.151s
+user	5m48.472s
+sys	1m56.124s
+in time and caused the data directory in elasticsearch to inflate to 11G.
