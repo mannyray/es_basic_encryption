@@ -1,0 +1,10 @@
+Testing performance of regular_encrypt vs no encryption.
+
+The command 'wget -nd -r -l 10 -A.txt ftp://ftp.ibiblio.org/pub/docs/books/gutenberg/' was used to download a large sample of text files whos total size was 44M ('du -sh * -c').
+
+
+~~~~~~~~~~~~~~~~~~~~~
+regular_encrypt:
+~~~~~~~~~~~~~~~~~~~~~
+
+In addition to storing the original text files on the client side, the client must generate the encrypted text files to store on the server.
