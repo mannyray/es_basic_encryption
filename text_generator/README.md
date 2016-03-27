@@ -1,1 +1,1 @@
-If you are looking to fill your elasticsearch indexes with text files and don't want to spend a few days downloading them from project gutenberg, then you can generate them yourselves using the following script.
+You can generate the text yourself or go to https://www.gutenberg.org/wiki/Gutenberg:The_CD_and_DVD_Project for some sample txt files. Use "cat fileName.txt | tr -cd '[[:alnum:]] ' > tmpFile; cat tmpFile > fileName.txt" to get rid of unwanted non alpha/number/space characters.'s
