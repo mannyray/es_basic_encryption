@@ -7,20 +7,23 @@ import java.io.IOException;
 //arguments:
 //   $1: <server_address> ~ address of server
 //   $2: <n_port> ~ port number being listened by server
-//   $3: <key> ~ file containing password
-//   $4: <query> ~ file containing query to be executed by elasticsearch
+//   $3: <wordToSearch> ~ file containing query to be executed by elasticsearch
 class client{
 	public static void main(String argv[]) throws Exception
 	{
 		//CHECK THAT ARGUMENTS PASSED ARE VALID IN TYPE AND COUNT
-		if(argv.length!=4){
+		if(argv.length!=3){
 			System.out.println("ERROR: INVALID ARGUMENT COUNT.");
 			System.exit(0);
 		}
 
+
+		ServerSocket welcomeSocket = new ServerSocket(0);
+		//System.out.println("SERVER_PORT="+welcomeSocket.getLocalPort());
+
+
 		Socket clientSocket = null;
 		try{
-
 			clientSocket = new Socket(argv[0], Integer.parseInt(argv[1]));
 		}
 		catch(Exception e){
@@ -33,40 +36,34 @@ class client{
 		DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
 		BufferedReader inFromServer =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		try{
-			//read in the password
-			File file = new File(argv[2]);
-			FileInputStream fis = null;
-			fis = new FileInputStream(file);
-			BufferedReader br = new BufferedReader(new InputStreamReader(fis));
-			String query_request = br.readLine()+"\n";
-	
-			//read in the query
-			file = new File(argv[3]);
-			fis = new FileInputStream(file);
-			br = new BufferedReader(new InputStreamReader(fis));
-			String line = null;
-			while((line=br.readLine())!=null){
-				query_request+=(line+"\n");
-			}
-
-			//send the concatenation of password and query to server
-			outToServer.writeBytes(query_request+"{!}QUERY_FINISHED{!}\n");
+			String query_request = argv[2];
+			//send the word to the server
+			outToServer.writeBytes(query_request+"\n"+welcomeSocket.getLocalPort()+"\n");
 		}
 		catch(Exception e){
 			System.out.println("Reading files failed.");
 			System.exit(0);
 		}
 
-		//obtain port number
-		int portNumber = 0;
+		//clientSocket.close();
+		//clientSocket = new Socket(argv[0], Integer.parseInt(argv[1]));
 		try{
-			portNumber  = Integer.parseInt(inFromServer.readLine());
+
+
+			String output="g";
+			while(output!=null){
+				output = inFromServer.readLine();
+				System.out.println(output);
+			}
+
+			
 		}
 		catch(Exception e){
-			System.out.println("ERROR: INVALID req_code.");
+			System.out.println("TRANSFER FILE FAIL.");
 			System.exit(0);
 		}
 		clientSocket.close();
+
 	}
 }
 

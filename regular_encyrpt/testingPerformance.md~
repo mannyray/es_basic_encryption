@@ -39,3 +39,10 @@ The upload time:
 Search time:
 
 
+
+
+
+Draft 2:
+
+No encryption:
+The original text was 67MB and ElasticSearch was 32.7 MB prior to uploading. After uploading, Elasticsearch inflated to 157.4 MB.
