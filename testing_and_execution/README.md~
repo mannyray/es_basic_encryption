@@ -10,11 +10,10 @@ Since there a lot of similarities between the encrypted and non encrypted method
 The section will cover:
 
 
-1. [Generating data](#foo)
+1. [Generating data](###Generating data)
 2. 
 
 
-# Foo
 ###Generating data
 If you have your own text data, you can skip this section.
 
