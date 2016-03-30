@@ -10,16 +10,20 @@ Since there a lot of similarities between the encrypted and non encrypted method
 The section will cover:
 
 
-1. [Generating data](###Generating data)
-2. 
+1. [Generating data](#gd)
+2. [Cleaning up the data](#cutd)
 
-
-###Generating data
+<a name="gd">
+###1. Generating data
+</a>
 If you have your own text data, you can skip this section.
 
 There are many methods of obtaining test data for Elasticsearch. Here are some samples:
 * **Random text:** in es\_basic\_encryption/text\_generator/ there is sample code that can be used for this. 
-* **Project Gutenberg:** has a lot of books. Here is a great [link](https://www.gutenberg.org/wiki/Gutenberg:The_CD_and_DVD_Project)
+* **Project Gutenberg:** has a lot of books. Here is a great [link](https://www.gutenberg.org/wiki/Gutenberg:The_CD_and_DVD_Project).
 * **Wikipedia:**
 
-
+<a name="cutd">
+###2. Cleaning up the data
+</a>
+Elasticsearch can be very picky when uploading text. Certain characters are considered invalid and will provide with you great difficulty in uploading the text.
