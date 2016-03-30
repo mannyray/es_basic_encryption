@@ -17,10 +17,8 @@ class client{
 			System.exit(0);
 		}
 
-
 		ServerSocket welcomeSocket = new ServerSocket(0);
 		//System.out.println("SERVER_PORT="+welcomeSocket.getLocalPort());
-
 
 		Socket clientSocket = null;
 		try{
@@ -37,7 +35,7 @@ class client{
 		BufferedReader inFromServer =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		try{
 			String query_request = argv[2];
-			//send the word to the server
+			//send the word to the server to be serached for 
 			outToServer.writeBytes(query_request+"\n"+welcomeSocket.getLocalPort()+"\n");
 		}
 		catch(Exception e){
@@ -45,18 +43,15 @@ class client{
 			System.exit(0);
 		}
 
-		//clientSocket.close();
-		//clientSocket = new Socket(argv[0], Integer.parseInt(argv[1]));
+
 		try{
-
-
 			String output="g";
-			while(output!=null){
+			while(output!="$$$$$$$$$$Finish"){//waiting for terminating sequence
 				output = inFromServer.readLine();
-				System.out.println(output);
+				if(output!=null){//in case of desynchronization of 
+					System.out.println(output);
+				}
 			}
-
-			
 		}
 		catch(Exception e){
 			System.out.println("TRANSFER FILE FAIL.");

@@ -8,46 +8,22 @@ import java.util.Scanner;
 
 /*
 The server that runs on the same machine that elasticsearch is running on. The server program
-acts like a wrapper that takes in incoming password-query pairs from clients. The program decrypts
-the appropriate data/pointer containing files within elasticsearch and executes the query. After this 
-the decrypted files are removed so that only the encrypted files are left and the result is sent
-back to client.
-
-Program is currently incomplete and cannot be relied upon to provide security.
+acts like a wrapper that takes in incoming query messages from client. The program executes
+the search query and then sends the result back to the client.
 */
 
 /*
 arguments:
 $1: <current script directory>
-		the script were the program scripts are located
-$2: <elasticsearch directory> 
-		the directory where elasticsearch is located
-
-		The directories have to be full 'pwd''s like locations
-
-$3: <port_number> [optional]
-    portnumber on which elasticsearch is listening on
-    default value of 9200
+		this script were the program scripts are located
+		used for executing search query
 */
-//The server assumes that the sensitive elasticsearch data is already encrypted
-// before starting. Can use the encryptAllData.sh to achieve this
 
 class server {
-	static int elastic_search_port_number;
 	public static void main(String argv[]) throws Exception {
 		//CHECK THAT ARGUMENTS PASSED ARE VALID IN TYPE AND COUNT
-		if(!(argv.length==3||argv.length==2)){
+		if(!(argv.length==1)){
 			System.out.println("ERROR: INVALID ARGUMENT COUNT. ONLY "+argv.length+" provided.");
-			System.exit(0);
-		}
-		try {
-			elastic_search_port_number = 9200;
-			if(argv.length==3){//default port number
-				elastic_search_port_number = Integer.parseInt(argv[2]);
-			}
-		}
-		catch(Exception e){
-			System.out.println("ERROR: INVALID ARGUMENT TYPES.");
 			System.exit(0);
 		}
 
@@ -57,14 +33,14 @@ class server {
 		int PORT = welcomeSocket.getLocalPort();
 		System.out.println("SERVER_PORT="+welcomeSocket.getLocalPort());
 
-    	//always listening for a new client, processing one client at a time
+    //always listening for a new client, processing one client at a time
 		while(true){
 			//TCP portion: Negotiation
 			Socket connectionSocket = welcomeSocket.accept();
 			BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
 			DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
 			
-			//Acquire key
+			//Acquire searchword
 			String query = inFromClient.readLine();
 			int port = Integer.parseInt(inFromClient.readLine());
 			System.out.println("seachWord="+query);
@@ -88,7 +64,7 @@ class server {
 			}
 			
 			//execute query
-			try{
+			try{//execute search query
 				Runtime.getRuntime().exec("chmod u+x "+argv[0]+"/"+queryFileName);
 				Runtime.getRuntime().exec(argv[0]+"/"+queryFileName);
 			}
@@ -97,23 +73,19 @@ class server {
 				System.exit(0);	
 			}
 
-			try{
+			try{//query result is saved in out.txt. Read the results back to client
 				File file = new File("out.txt");
 				BufferedReader br = new BufferedReader(new FileReader(file));
 				String availalbe;
 				while((availalbe = br.readLine()) != null) {
 					outToClient.writeBytes(availalbe+"\n");
 				}
-
+				outToClient.writeBytes("$$$$$$$$$$Finish");//terminating sequence
 			}
 			catch(Exception e){
-				
 				System.out.println("FILE TRANSFER FAIL.");
-				
-
 			}	
 			connectionSocket.close();
-
 		}
 	}    
 }
