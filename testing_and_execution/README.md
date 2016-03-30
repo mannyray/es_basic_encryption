@@ -8,10 +8,13 @@ Storing large quantities of text on Elasticsearch using encryption or no encrypt
 Since there a lot of similarities between the encrypted and non encrypted methods, the explanation for both will be in one section where differences between the two will be explicitly mentioned.
 
 The section will cover:
-1. [Generating data][]
+
+
+1. [Generating data](#foo)
 2. 
 
 
+# Foo
 ###Generating data
 If you have your own text data, you can skip this section.
 
