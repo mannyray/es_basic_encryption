@@ -1,1 +1,7 @@
-You can generate the text yourself or go to https://www.gutenberg.org/wiki/Gutenberg:The_CD_and_DVD_Project for some sample txt files. Use "cat fileName.txt | tr -cd '[[:alnum:]] ' > tmpFile; cat tmpFile > fileName.txt" to get rid of unwanted non alpha/number/space characters.'s
+#Random text generator usage:
+Generate **N** files with **M** random words in each file from a provided wordbank **W**
+1. `g++ generateText.cc`
+
+2. `./a.out W N M`
+
+
