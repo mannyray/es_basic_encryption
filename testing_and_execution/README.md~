@@ -36,7 +36,7 @@ Elasticsearch can be very picky when uploading text. Certain characters are cons
 The script _encryptTextFiles.sh_ in [es_basic_encryption/regular_encyrpt/encryptAllFiles/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encyrpt/encryptAllFiles) encrypts the data, word by word, all under the same key. AES is used to encrypt the data where the cipher words are stored in hex format. The storage format considerably inflates the data size but avoids invalid characters (example: 'well' can be translated to 0x731b31922c9228465e0f0ea51ea7f). Details can be found in the README.md of the script directory. 
 
 
-Note: If you are testing performance between encrypted and unecrypted methods, then it makes sense to clean up the data as described in the previous paragraph and then encrypt. However, if you are not testing, then this is unnecessary.
+Note: If you are testing performance between encrypted and unecrypted methods, then it makes sense to clean up the data as described in the previous paragraph and then encrypt in order to be consistent. However, if you are not testing, then this is unnecessary.
 
 
 <a name="ud">
@@ -48,14 +48,22 @@ Both encrypted and regular data can be uploaded in the same fashion. Assuming yo
 <a name="sd">
 ###4. Searching data
 </a>
-At this point you have a server with data loaded Elasticsearch running in the background. On the server side you want to run _server.sh_ and _client.sh_ on client - _client.sh_ from [es_basic_encryption/client_server_connection/](https://github.com/mannyray/es_basic_encryption/tree/master/client_server_connection) with argument types and other details provided in script directory.
+At this point you have a server with data loaded Elasticsearch running in the background. On the server side you want to run _server.sh_ and _client.sh_ on client from [es_basic_encryption/client_server_connection/](https://github.com/mannyray/es_basic_encryption/tree/master/client_server_connection) with argument types and other details provided in script directory.
 
 **Encryption version**
 Since data is stored in encrypted format on server, then the client has to first encrypt the search word using _translateKey.cc_ from [es_basic_encryption/regular_encyrpt/searchDocuments/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encyrpt/searchDocuments) and then use the cipher text as the search word.
 
 **Testing search**
-* unecrypted: run _testServer.sh_ from [es_basic_encryption/client_server_connection/](https://github.com/mannyray/es_basic_encryption/tree/master/client_server_connection) where _most\_common\_words.txt_ will contain the list of search words to test. The output of the script is to standard output which can be piped to _parseData.sh_ in order to output in a neat table:
+For testing the following data is recorded for each query:
+* search word
+* total time from sending query, to server response
+* query result size
+* search time on server end (milliseconds) 
 
+For encrypted you might want to add encryption/decryption overhead time.
+
+* unecrypted: run _testServer.sh_ from [es_basic_encryption/client_server_connection/](https://github.com/mannyray/es_basic_encryption/tree/master/client_server_connection) where _most\_common\_words.txt_ will contain the list of search words to test. The output of the script is to standard output which can be piped to _parseData.sh_ in order to output in a neat table (view raw on github):
+```
 Search-Word          Total-time           Result-size     Search-Time(ms)
 -------------------------------------------------------------------------
 command              0m52.773s            65M             222            
@@ -70,7 +78,7 @@ play                 0m53.502s            66M             244
 bright               0m49.110s            61M             197            
 return               0m53.437s            66M             263            
 invention            0m43.215s            54M             148 
-
+```
 
 * encrypted: can also run _testServer.sh_ except you will have to encrypt the words in _most\_common\_words.txt_ before using them. In addition you will have to decrypt the text that is returned. The scripts for this will soon be added.
 

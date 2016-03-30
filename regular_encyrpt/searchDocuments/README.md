@@ -1,8 +1,8 @@
 translateKey.cc can be used to encrypt a single word.
 
-1. `g++ translateKey.cc`
+1. `g++ -o encrypt encryptFile.cc -L/usr/lib/crypto++ -lcrypto++`
 
-2. `./a.out <key> <search_word> `
+2. `./encrypt <key> <search_word> `
 
 
 
