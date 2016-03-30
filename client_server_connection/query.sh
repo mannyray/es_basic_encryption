@@ -1,2 +1,2 @@
 #!/bin/bash
-curl -XGET http://localhost:9200/newindex/_search?pretty=true -d '{"query":{"match":{"content":"the"}}}' > out.txt
+curl -XGET http://localhost:9200/newindex/_search?pretty=true -d '{"from" : 0, "size" : 10000,"query":{"match":{"content":"invention"}}}' > out.txt

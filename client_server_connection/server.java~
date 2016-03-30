@@ -56,7 +56,7 @@ class server {
 				writer = new BufferedWriter(new OutputStreamWriter(
 				new FileOutputStream(queryFileName), "utf-8"));
 				writer.write("#!/bin/bash\n");
-				writer.write("curl -XGET http://localhost:9200/newindex/_search?pretty=true -d '{\"query\":{\"match\":{\"content\":\""+query+"\"}}}' > out.txt");
+				writer.write("curl -XGET http://localhost:9200/newindex/_search?pretty=true -d '{\"from\" : 0, \"size\" : 10000,\"query\":{\"match\":{\"content\":\""+query+"\"}}}' > out.txt");
 				writer.close();
 			}
 			catch (IOException ex) {
@@ -65,8 +65,10 @@ class server {
 			
 			//execute query
 			try{//execute search query
-				Runtime.getRuntime().exec("chmod u+x "+argv[0]+"/"+queryFileName);
-				Runtime.getRuntime().exec(argv[0]+"/"+queryFileName);
+				Process p = Runtime.getRuntime().exec("chmod u+x "+argv[0]+"/"+queryFileName);
+				p.waitFor();
+				p = Runtime.getRuntime().exec(argv[0]+"/"+queryFileName);
+				p.waitFor();
 			}
 			catch(Exception e){
 				System.out.println("QUERY FAIL.");

@@ -46,10 +46,12 @@ class client{
 
 		try{
 			String output="g";
-			while(output!="$$$$$$$$$$Finish"){//waiting for terminating sequence
+			while(!output.equals("$$$$$$$$$$Finish")){//waiting for terminating sequence
 				output = inFromServer.readLine();
 				if(output!=null){//in case of desynchronization of 
-					System.out.println(output);
+					if(!output.equals("$$$$$$$$$$Finish")){
+						System.out.println(output);
+					}
 				}
 			}
 		}
