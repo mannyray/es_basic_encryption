@@ -1,132 +1,441 @@
 
-real	0m52.773s
-user	0m6.230s
-sys	0m9.578s
+real	0m6.548s
+user	0m1.899s
+sys	0m1.145s
 
-command
+chilly
 fileSize:
--rw-r--r-- 1 snzonov none 65M Mar 30 14:03 out.txt
+-rw-r--r-- 1 snzonov none 6.7M Mar 31 20:00 out.txt
 {
-  "took" : 222,
+  "took" : 64,
+  "
+
+real	0m0.317s
+user	0m0.219s
+sys	0m0.115s
+
+tightfisted
+fileSize:
+-rw-r--r-- 1 snzonov none 193 Mar 31  2016 out.txt
+{
+  "took" : 3,
+  "t
+
+real	0m38.284s
+user	0m5.140s
+sys	0m7.868s
+
+opposite
+fileSize:
+-rw-r--r-- 1 snzonov none 45M Mar 31 20:00 out.txt
+{
+  "took" : 100,
   
 
-real	0m36.143s
-user	0m4.937s
-sys	0m7.141s
+real	0m19.770s
+user	0m2.543s
+sys	0m3.734s
 
-heavenly
+recess
 fileSize:
--rw-r--r-- 1 snzonov none 43M Mar 30 14:03 out.txt
+-rw-r--r-- 1 snzonov none 23M Mar 31 20:01 out.txt
 {
-  "took" : 193,
+  "took" : 64,
+  "
+
+real	0m42.278s
+user	0m5.510s
+sys	0m8.588s
+
+fit
+fileSize:
+-rw-r--r-- 1 snzonov none 50M Mar 31 20:01 out.txt
+{
+  "took" : 107,
   
 
-real	0m47.600s
-user	0m6.953s
-sys	0m8.851s
+real	0m12.423s
+user	0m2.260s
+sys	0m2.490s
 
-milk
+unaccountable
 fileSize:
--rw-r--r-- 1 snzonov none 60M Mar 30 14:04 out.txt
+-rw-r--r-- 1 snzonov none 14M Mar 31 20:02 out.txt
 {
-  "took" : 223,
+  "took" : 52,
+  "
+
+real	0m40.864s
+user	0m4.906s
+sys	0m7.841s
+
+cross
+fileSize:
+-rw-r--r-- 1 snzonov none 48M Mar 31 20:02 out.txt
+{
+  "took" : 116,
   
 
-real	0m44.961s
-user	0m5.999s
-sys	0m8.893s
+real	0m46.033s
+user	0m6.026s
+sys	0m8.763s
 
-calm
+letter
 fileSize:
--rw-r--r-- 1 snzonov none 57M Mar 30 14:05 out.txt
+-rw-r--r-- 1 snzonov none 53M Mar 31 20:03 out.txt
 {
-  "took" : 255,
+  "took" : 135,
   
 
-real	0m29.485s
-user	0m3.786s
-sys	0m5.689s
+real	0m33.016s
+user	0m4.681s
+sys	0m6.937s
 
-chess
+roll
 fileSize:
--rw-r--r-- 1 snzonov none 36M Mar 30 14:05 out.txt
+-rw-r--r-- 1 snzonov none 39M Mar 31 20:04 out.txt
 {
-  "took" : 182,
+  "took" : 86,
+  "
+
+real	0m11.290s
+user	0m2.488s
+sys	0m2.509s
+
+efficient
+fileSize:
+-rw-r--r-- 1 snzonov none 13M Mar 31 20:04 out.txt
+{
+  "took" : 35,
+  "
+
+real	0m17.217s
+user	0m2.660s
+sys	0m3.160s
+
+languid
+fileSize:
+-rw-r--r-- 1 snzonov none 18M Mar 31 20:04 out.txt
+{
+  "took" : 46,
+  "
+
+real	0m2.548s
+user	0m1.403s
+sys	0m0.610s
+
+glib
+fileSize:
+-rw-r--r-- 1 snzonov none 2.6M Mar 31  2016 out.txt
+{
+  "took" : 16,
+  "
+
+real	0m27.607s
+user	0m4.146s
+sys	0m6.103s
+
+victorious
+fileSize:
+-rw-r--r-- 1 snzonov none 33M Mar 31 20:04 out.txt
+{
+  "took" : 97,
+  "
+
+real	0m21.135s
+user	0m3.164s
+sys	0m4.221s
+
+challenge
+fileSize:
+-rw-r--r-- 1 snzonov none 25M Mar 31 20:05 out.txt
+{
+  "took" : 92,
+  "
+
+real	0m2.243s
+user	0m1.406s
+sys	0m0.470s
+
+juicy
+fileSize:
+-rw-r--r-- 1 snzonov none 2.2M Mar 31  2016 out.txt
+{
+  "took" : 14,
+  "
+
+real	0m41.203s
+user	0m5.435s
+sys	0m8.511s
+
+price
+fileSize:
+-rw-r--r-- 1 snzonov none 47M Mar 31 20:06 out.txt
+{
+  "took" : 139,
   
 
-real	0m53.601s
-user	0m7.009s
+real	0m16.411s
+user	0m2.733s
+sys	0m3.779s
+
+cats
+fileSize:
+-rw-r--r-- 1 snzonov none 20M Mar 31 20:06 out.txt
+{
+  "took" : 59,
+  "
+
+real	0m10.744s
+user	0m2.271s
+sys	0m2.311s
+
+momentous
+fileSize:
+-rw-r--r-- 1 snzonov none 12M Mar 31 20:06 out.txt
+{
+  "took" : 39,
+  "
+
+real	0m19.253s
+user	0m3.045s
+sys	0m4.205s
+
+hook
+fileSize:
+-rw-r--r-- 1 snzonov none 23M Mar 31 20:06 out.txt
+{
+  "took" : 91,
+  "
+
+real	0m32.178s
+user	0m3.692s
+sys	0m6.432s
+
+veil
+fileSize:
+-rw-r--r-- 1 snzonov none 38M Mar 31 20:07 out.txt
+{
+  "took" : 138,
+  
+
+real	0m10.332s
+user	0m2.185s
+sys	0m2.277s
+
+friction
+fileSize:
+-rw-r--r-- 1 snzonov none 12M Mar 31 20:07 out.txt
+{
+  "took" : 76,
+  "
+
+real	0m0.309s
+user	0m0.223s
+sys	0m0.103s
+
+offbeat
+fileSize:
+-rw-r--r-- 1 snzonov none 193 Mar 31  2016 out.txt
+{
+  "took" : 3,
+  "t
+
+real	0m0.244s
+user	0m0.140s
+sys	0m0.147s
+
+classy
+fileSize:
+-rw-r--r-- 1 snzonov none 193 Mar 31  2016 out.txt
+{
+  "took" : 3,
+  "t
+
+real	0m43.982s
+user	0m5.343s
+sys	0m8.048s
+
+war
+fileSize:
+-rw-r--r-- 1 snzonov none 51M Mar 31 20:08 out.txt
+{
+  "took" : 145,
+  
+
+real	0m45.652s
+user	0m4.900s
+sys	0m7.873s
+
+part
+fileSize:
+-rw-r--r-- 1 snzonov none 53M Mar 31 20:09 out.txt
+{
+  "took" : 143,
+  
+
+real	0m0.958s
+user	0m0.934s
+sys	0m0.283s
+
+unpack
+fileSize:
+-rw-r--r-- 1 snzonov none 649K Mar 31  2016 out.txt
+{
+  "took" : 11,
+  "
+
+real	0m26.207s
+user	0m3.575s
+sys	0m5.951s
+
+partner
+fileSize:
+-rw-r--r-- 1 snzonov none 31M Mar 31 20:09 out.txt
+{
+  "took" : 124,
+  
+
+real	0m43.058s
+user	0m5.738s
 sys	0m9.265s
 
-produce
+move
 fileSize:
--rw-r--r-- 1 snzonov none 66M Mar 30 14:06 out.txt
+-rw-r--r-- 1 snzonov none 50M Mar 31 20:10 out.txt
 {
-  "took" : 240,
+  "took" : 143,
   
 
-real	0m33.036s
-user	0m4.427s
-sys	0m6.252s
+real	0m4.606s
+user	0m1.708s
+sys	0m0.986s
 
-snake
+frightening
 fileSize:
--rw-r--r-- 1 snzonov none 41M Mar 30 14:07 out.txt
+-rw-r--r-- 1 snzonov none 4.9M Mar 31 20:10 out.txt
 {
-  "took" : 202,
+  "took" : 30,
+  "
+
+real	0m17.036s
+user	0m2.970s
+sys	0m3.831s
+
+invent
+fileSize:
+-rw-r--r-- 1 snzonov none 21M Mar 31 20:10 out.txt
+{
+  "took" : 47,
+  "
+
+real	0m12.735s
+user	0m2.814s
+sys	0m2.851s
+
+spoon
+fileSize:
+-rw-r--r-- 1 snzonov none 15M Mar 31 20:10 out.txt
+{
+  "took" : 107,
   
 
-real	0m30.863s
-user	0m3.735s
-sys	0m5.736s
+real	0m9.650s
+user	0m2.182s
+sys	0m2.233s
 
-robust
+mundane
 fileSize:
--rw-r--r-- 1 snzonov none 38M Mar 30 14:07 out.txt
+-rw-r--r-- 1 snzonov none 11M Mar 31 20:10 out.txt
 {
-  "took" : 196,
-  
+  "took" : 41,
+  "
 
-real	0m53.502s
-user	0m6.783s
-sys	0m9.556s
+real	0m16.955s
+user	0m2.669s
+sys	0m3.642s
 
-play
+clap
 fileSize:
--rw-r--r-- 1 snzonov none 66M Mar 30 14:08 out.txt
+-rw-r--r-- 1 snzonov none 20M Mar 31 20:11 out.txt
 {
-  "took" : 244,
-  
+  "took" : 86,
+  "
 
-real	0m49.110s
-user	0m6.046s
-sys	0m8.913s
+real	0m25.133s
+user	0m3.690s
+sys	0m4.899s
+
+thirsty
+fileSize:
+-rw-r--r-- 1 snzonov none 30M Mar 31 20:11 out.txt
+{
+  "took" : 60,
+  "
+
+real	0m3.463s
+user	0m0.875s
+sys	0m0.609s
+
+crate
+fileSize:
+-rw-r--r-- 1 snzonov none 3.7M Mar 31 20:11 out.txt
+{
+  "took" : 25,
+  "
+
+real	0m40.051s
+user	0m4.592s
+sys	0m8.347s
 
 bright
 fileSize:
--rw-r--r-- 1 snzonov none 61M Mar 30 14:09 out.txt
+-rw-r--r-- 1 snzonov none 47M Mar 31 20:12 out.txt
 {
-  "took" : 197,
+  "took" : 132,
   
 
-real	0m53.437s
-user	0m6.468s
-sys	0m10.445s
+real	0m2.954s
+user	0m1.489s
+sys	0m0.686s
 
-return
+jog
 fileSize:
--rw-r--r-- 1 snzonov none 66M Mar 30 14:10 out.txt
+-rw-r--r-- 1 snzonov none 3.0M Mar 31 20:12 out.txt
 {
-  "took" : 263,
+  "took" : 24,
+  "
+
+real	0m43.384s
+user	0m5.525s
+sys	0m9.889s
+
+mark
+fileSize:
+-rw-r--r-- 1 snzonov none 52M Mar 31 20:13 out.txt
+{
+  "took" : 157,
   
 
-real	0m43.215s
-user	0m5.620s
-sys	0m8.467s
+real	0m23.798s
+user	0m3.726s
+sys	0m5.354s
 
-invention
+groan
 fileSize:
--rw-r--r-- 1 snzonov none 54M Mar 30 14:11 out.txt
+-rw-r--r-- 1 snzonov none 28M Mar 31 20:13 out.txt
 {
-  "took" : 148,
+  "took" : 69,
+  "
+
+real	0m12.996s
+user	0m2.995s
+sys	0m2.783s
+
+kettle
+fileSize:
+-rw-r--r-- 1 snzonov none 15M Mar 31 20:13 out.txt
+{
+  "took" : 49,
+  "
 
