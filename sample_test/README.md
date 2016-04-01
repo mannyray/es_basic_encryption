@@ -183,7 +183,7 @@ kettle         | 0m12.996s - 0m48.317s | 15M  - 63M  | 49  - 137
 
 CDF for search-time's for non encryption vs encryption:
 
-![alt text][cdf1]
+![test1](cdf1.jpg)
 
 CDF for total-time's for non encryption vs encryption:
 
@@ -191,5 +191,5 @@ CDF for total-time's for non encryption vs encryption:
 
 
 
-[cdf1]: https://github.com/mannyray/es_basic_encryption/tree/master/sample_test/ne_es_search.jpg "CDF for search times of no encryption."
+[cdf1]: https://github.com/mannyray/es_basic_encryption/tree/master/sample_test/cdf1.jpg "CDF for search times of no encryption."
 [cdf2]: https://github.com/mannyray/es_basic_encryption/tree/master/sample_test/ne_es_total.jpg "CDF for search times of no encryption."
