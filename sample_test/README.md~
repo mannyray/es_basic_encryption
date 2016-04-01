@@ -5,6 +5,7 @@ Basic testing of encryption and non encryption methods on Elasticsearch.
 2. [Cleaning up the data](#cutd)
 3. [Uploading data](#ud)
 4. [Searching data](#sd)
+5. [Analysis](#an)
 
 <a name="gd">
 ###1. Generating data
@@ -16,7 +17,7 @@ Basic testing of encryption and non encryption methods on Elasticsearch.
 ###2. Cleaning up the data
 </a>
 
-Cleaning the data of unwanted invalid characters shrunk the data to 54MB.
+Cleaning the data of invalid characters shrunk the data to 54MB.
 
 
 <a name="ud">
@@ -26,12 +27,14 @@ Cleaning the data of unwanted invalid characters shrunk the data to 54MB.
 Prior to uploading to Elasticsearch, the Elasticsearch took up 31M. After uploading, the data inflated to 126M.
 
 **Encryption:**
-* Encrypting the data from (2) inflated the data to
+* Encrypting the data from (2) inflated the data to 312M.
+* Prior to uploading to Elasticsearch, the Elasticsearch took up 32M. After uploading, the data inflated to 341M.
 
 
 <a name="sd">
 ###4. Searching data
 </a>
+40 random words were selected to search on Elasticsearch.
 **Non encryption:**
 ```
 Search-Word          Total-time           Result-size     Search-Time(ms)
@@ -77,3 +80,17 @@ mark                 0m43.384s            52M             157
 groan                0m23.798s            28M             69             
 kettle               0m12.996s            15M             49 
 ```
+
+**Encryption:**
+The same words were used (matching order). In this case, they are just encrypted.
+
+
+
+Here is another table, with the data between encrypted and non encrypted side for comparison.
+
+###5. Analysis
+![alt text][cdf_for_ne_st]
+
+
+
+[logo]: https://github.com/mannyray/es_basic_encryption/tree/master/sample_test/ne_es_search.jpg "CDF for search times of no encryption."
