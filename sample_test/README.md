@@ -187,9 +187,6 @@ CDF for search-time's for non encryption vs encryption:
 
 CDF for total-time's for non encryption vs encryption:
 
-![alt text][cdf2]
+![test2](cdf2.jpg)
 
 
-
-[cdf1]: https://github.com/mannyray/es_basic_encryption/tree/master/sample_test/cdf1.jpg "CDF for search times of no encryption."
-[cdf2]: https://github.com/mannyray/es_basic_encryption/tree/master/sample_test/ne_es_total.jpg "CDF for search times of no encryption."
