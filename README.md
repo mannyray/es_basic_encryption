@@ -23,7 +23,8 @@ If you have your own text data, you can skip this section.
 There are many methods of obtaining test data for Elasticsearch. Here are some samples:
 * **Random text:** in [es\_basic\_encryption/text\_generator/](https://github.com/mannyray/es_basic_encryption/tree/master/text_generator) there is sample code that can be used for this (_generateText.cc_ ). 
 * **Project Gutenberg:** has a lot of books. Here is a great [link](https://www.gutenberg.org/wiki/Gutenberg:The_CD_and_DVD_Project).
-* **Wikipedia:** There are lots of options to consider when downloading data from Wikipedia. Some of these options can be overwhelming by producing too much data. The method tested in this project extracted articles from a specific category of choice using [Petscan](https://meta.wikimedia.org/wiki/PetScan/en).  As an example: go to the [app](https://petscan.wmflabs.org/), and for _categories_ enter _history_ and set _depth_ for _2_. Go to _Ouput_ tab and set Format to _CSV_.
+* **Wikipedia:** There are lots of options to consider when downloading data from Wikipedia. Some of these options can be overwhelming by producing too much data. The method tested in this project extracted articles from a specific category of choice using [Petscan](https://meta.wikimedia.org/wiki/PetScan/en).  
+As an example: go to the [app](https://petscan.wmflabs.org/), and for _categories_ enter _history_ and set _depth_ for _2_. Go to _Ouput_ tab and set Format to _CSV_.
 
 <a name="cutd">
 ###2. Cleaning up the data
