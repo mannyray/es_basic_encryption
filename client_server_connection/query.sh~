@@ -1,2 +1,0 @@
-#!/bin/bash
-curl -XGET http://localhost:9200/newindex/_search?pretty=true -d '{"from" : 0, "size" : 10000,"query":{"match":{"content":"0xfa489b651c158fd1f154584ff9a887"}}}' > out.txt

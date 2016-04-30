@@ -28,11 +28,12 @@ class server {
 		}
 
 		//get a free port and print the port number. This will be the port that the client will
-		//send the key and query to for our wrapper to handle
+		//send query to for our wrapper to handle
 		ServerSocket welcomeSocket = new ServerSocket(0);
 		int PORT = welcomeSocket.getLocalPort();
 		System.out.println("SERVER_PORT="+welcomeSocket.getLocalPort());
 
+		int clientNumber=1;
     //always listening for a new client, processing one client at a time
 		while(true){
 			//TCP portion: Negotiation
@@ -40,11 +41,11 @@ class server {
 			BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
 			DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
 			
+			System.out.println("Serving client #"+clientNumber);clientNumber++;
+
 			//Acquire searchword
 			String query = inFromClient.readLine();
-			int port = Integer.parseInt(inFromClient.readLine());
 			System.out.println("seachWord="+query);
-			System.out.println("client_port="+port);
 
 			//write query to file to be executed 
 			String queryFileName = "";
@@ -63,30 +64,41 @@ class server {
   				System.out.println("Failure in writing query to file.");
 			}
 			
-			//execute query
+			//executing query
 			try{//execute search query
-				Process p = Runtime.getRuntime().exec("chmod u+x "+argv[0]+"/"+queryFileName);
+				Process p = Runtime.getRuntime().exec("chmod u+x "+argv[0]+"/"+queryFileName);//make the query executable
 				p.waitFor();
-				p = Runtime.getRuntime().exec(argv[0]+"/"+queryFileName);
-				p.waitFor();
+				p = Runtime.getRuntime().exec(argv[0]+"/"+queryFileName);//run the query
+				p.waitFor();//important to wait for query to finish executing before transmitting file 
 			}
 			catch(Exception e){
 				System.out.println("QUERY FAIL.");
 				System.exit(0);	
 			}
 
-			try{//query result is saved in out.txt. Read the results back to client
-				File file = new File("out.txt");
-				BufferedReader br = new BufferedReader(new FileReader(file));
-				String availalbe;
-				while((availalbe = br.readLine()) != null) {
-					outToClient.writeBytes(availalbe+"\n");
-				}
-				outToClient.writeBytes("$$$$$$$$$$Finish");//terminating sequence
+
+			try{
+				//query result is saved in out.txt. Read the results back to client
+				File transferFile = new File ("out.txt");//TODO:out.txt
+				//tell client file length to be transmitted: limit of file size based on MAX_INT
+				outToClient.writeBytes((int)transferFile.length()+"\n");
+
+				//transmit file
+				byte [] bytearray = new byte [(int)transferFile.length()];
+				FileInputStream fin = new FileInputStream(transferFile);
+				BufferedInputStream bin = new BufferedInputStream(fin);
+				bin.read(bytearray,0,bytearray.length);
+				OutputStream os = connectionSocket.getOutputStream(); 
+				System.out.println("Sending Files...");
+				System.out.println("File size: "+bytearray.length);
+				os.write(bytearray,0,bytearray.length);
+				os.flush(); 
+				System.out.println("File transfer complete");
 			}
 			catch(Exception e){
 				System.out.println("FILE TRANSFER FAIL.");
 			}	
+			System.out.println("");
 			connectionSocket.close();
 		}
 	}    

@@ -18,8 +18,6 @@ class client{
 		}
 
 		ServerSocket welcomeSocket = new ServerSocket(0);
-		//System.out.println("SERVER_PORT="+welcomeSocket.getLocalPort());
-
 		Socket clientSocket = null;
 		try{
 			clientSocket = new Socket(argv[0], Integer.parseInt(argv[1]));
@@ -35,7 +33,7 @@ class client{
 		BufferedReader inFromServer =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		try{
 			String query_request = argv[2];
-			//send the word to the server to be serached for 
+			//send the word to the server to be searched for 
 			outToServer.writeBytes(query_request+"\n"+welcomeSocket.getLocalPort()+"\n");
 		}
 		catch(Exception e){
@@ -45,15 +43,30 @@ class client{
 
 
 		try{
-			String output="g";
-			while(!output.equals("$$$$$$$$$$Finish")){//waiting for terminating sequence
-				output = inFromServer.readLine();
-				if(output!=null){//in case of desynchronization of 
-					if(!output.equals("$$$$$$$$$$Finish")){
-						System.out.println(output);
-					}
-				}
-			}
+			int filesize=0;
+			int bytesRead;
+			int currentTot = 0;
+			
+			//getting filesize of results from server that is going to be transmitted to us
+			String output = "";
+			output = inFromServer.readLine();
+			filesize =  Integer.parseInt(output);
+
+			//obtain results from server
+			byte [] bytearray = new byte [filesize];
+			InputStream is = clientSocket.getInputStream();
+			FileOutputStream fos = new FileOutputStream("result.txt");
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			bytesRead = is.read(bytearray,0,bytearray.length);
+			currentTot = bytesRead;
+			do {
+				bytesRead = is.read(bytearray, currentTot, (bytearray.length-currentTot));
+				if(bytesRead >= 0) currentTot += bytesRead;
+				//System.out.println(currentTot); 
+			} while(currentTot<filesize);
+			bos.write(bytearray, 0 , currentTot);
+			bos.flush(); bos.close(); 
+
 		}
 		catch(Exception e){
 			System.out.println("TRANSFER FILE FAIL.");
