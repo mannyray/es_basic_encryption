@@ -34,7 +34,7 @@ class client{
 		try{
 			String query_request = argv[2];
 			//send the word to the server to be searched for 
-			outToServer.writeBytes(query_request+"\n"+welcomeSocket.getLocalPort()+"\n");
+			outToServer.writeBytes(query_request+"\n");//
 		}
 		catch(Exception e){
 			System.out.println("Reading files failed.");
@@ -47,28 +47,38 @@ class client{
 			int bytesRead;
 			int currentTot = 0;
 			
-			//getting filesize of results from server that is going to be transmitted to us
-			String output = "";
-			output = inFromServer.readLine();
-			filesize =  Integer.parseInt(output);
-			System.out.println("File size " + filesize+"bytes incoming");
-    //Thread.sleep(1000);                 //1000 milliseconds is one second.
+
 
 			//obtain results from server
 			byte [] bytearray = new byte [filesize];
 			InputStream is = clientSocket.getInputStream();
 			FileOutputStream fos = new FileOutputStream("result.txt");
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
+
+			//getting filesize of results from server that is going to be transmitted to us
+			String output = "";
+			output = inFromServer.readLine();
+			filesize =  Integer.parseInt(output);
+			System.out.println("File size " + filesize+"bytes incoming");
+
+
+
 			bytesRead = is.read(bytearray,0,bytearray.length);
 			currentTot = bytesRead;
+
 			do {
 				bytesRead = is.read(bytearray, currentTot, (bytearray.length-currentTot));
 				if(bytesRead >= 0) currentTot += bytesRead;
-				System.out.println(currentTot); 
+				System.out.println(currentTot);
+				if(currentTot==-1){
+					//break;
+				} 
 			} while(currentTot<filesize);
 			bos.write(bytearray, 0 , currentTot);
 			bos.flush(); bos.close(); 
 
+			outToServer.writeBytes("done\n");
+	
 		}
 		catch(Exception e){
 			System.out.println("TRANSFER FILE FAIL.");
