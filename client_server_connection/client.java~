@@ -30,7 +30,7 @@ class client{
 		//////////////
 		//TCP portion: Negotiation            
 		DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
-		BufferedReader inFromServer =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+		//BufferedReader inFromServer =  new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 		try{
 			String query_request = argv[2];
 			//send the word to the server to be searched for 
@@ -43,41 +43,38 @@ class client{
 
 
 		try{
-			int filesize=0;
+			int filesize=193;
 			int bytesRead;
 			int currentTot = 0;
 			
 
 
 			//obtain results from server
-			byte [] bytearray = new byte [filesize];
 			InputStream is = clientSocket.getInputStream();
 			FileOutputStream fos = new FileOutputStream("result.txt");
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
+	
 
 			//getting filesize of results from server that is going to be transmitted to us
-			String output = "";
-			output = inFromServer.readLine();
-			filesize =  Integer.parseInt(output);
-			System.out.println("File size " + filesize+"bytes incoming");
+			StringBuilder sb = new StringBuilder();
+			char next = (char)is.read();
+			while( next!='\n'){
+				sb.append(next);			
+				next = (char)is.read();
+			}filesize = Integer.parseInt(sb.toString());
+			byte [] bytearray = new byte [filesize];
+			System.out.println("File incoming: " + filesize+"bytes.");
 
-
-
+			//save file
 			bytesRead = is.read(bytearray,0,bytearray.length);
 			currentTot = bytesRead;
-
 			do {
 				bytesRead = is.read(bytearray, currentTot, (bytearray.length-currentTot));
 				if(bytesRead >= 0) currentTot += bytesRead;
-				System.out.println(currentTot);
-				if(currentTot==-1){
-					//break;
-				} 
 			} while(currentTot<filesize);
 			bos.write(bytearray, 0 , currentTot);
 			bos.flush(); bos.close(); 
 
-			outToServer.writeBytes("done\n");
 	
 		}
 		catch(Exception e){

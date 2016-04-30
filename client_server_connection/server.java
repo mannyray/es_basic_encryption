@@ -94,11 +94,6 @@ class server {
 				outToClient.writeBytes((int)transferFile.length()+"\n");
 				os.write(bytearray,0,bytearray.length);
 				os.flush(); 
-	
-				query = inFromClient.readLine();
-				if(query!="done"){
-					throw new Exception();
-				}
 
 				System.out.println("File transfer complete");
 			}
