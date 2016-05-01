@@ -1,0 +1,22 @@
+#!/bin/bash
+#source:
+#http://www.georgestragand.com/elasticsearchbash.html
+echo "#!/bin/bash" > ./loadit.sh
+echo "" >> ./loadit.sh
+
+echo "curl -XDELETE http://localhost:9200/newindex?pretty" >> ./loadit.sh
+echo "" >> ./loadit.sh
+echo "curl -XPUT http://localhost:9200/newindex?pretty" >> ./loadit.sh
+echo "" >> ./loadit.sh
+COUNTER=0
+FILES="./encrypted_*.txt"
+for f in $FILES
+do
+  COUNTER=$[COUNTER + 1]
+ #changed the curl command a bit as the files can get pretty big
+  CONTENT="`cat $f | sed "s/'//g"`"
+  echo "curl -XPUT http://localhost:9200/newindex/doc/$COUNTER -d @$f" >> ./loadit.sh
+  echo "" >> ./loadit.sh
+done
+chmod 777 ./loadit.sh
+/bin/bash ./loadit.sh
