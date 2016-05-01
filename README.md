@@ -34,7 +34,7 @@ Elasticsearch can be very picky when uploading text. Certain characters are cons
 
 **Encryption version**
 
-The script _encryptTextFiles.sh_ in [es_basic_encryption/regular_encyrpt/encryptAllFiles/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encyrpt/encryptAllFiles) encrypts the data, word by word, all under the same key. AES is used to encrypt the data where the cipher words are stored in hex format. The storage format considerably inflates the data size but avoids invalid characters (example: 'well' can be translated to 0x731b31922c9228465e0f0ea51ea7f). Details can be found in the README.md of the script directory. 
+The script _encryptTextFiles.sh_ in [es_basic_encryption/regular_encrypt/encryptAllFiles/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encrypt/encryptAllFiles) encrypts the data, word by word, all under the same key. AES is used to encrypt the data where the cipher words are stored in hex format. The storage format considerably inflates the data size but avoids invalid characters (example: 'well' can be translated to 0x731b31922c9228465e0f0ea51ea7f). Details can be found in the README.md of the script directory. 
 
 
 Note: If you are testing performance between encrypted and unecrypted methods, then it makes sense to clean up the data as described in the previous paragraph and then encrypt in order to be consistent. If you are not testing, then this is unnecessary. However, if you are not cleaning up the data, then there will be a great difference between the search term 'the' and 'the,' since the encryption of _encryptTextFiles.sh_ encrypts by space separated strings.
@@ -43,7 +43,7 @@ Note: If you are testing performance between encrypted and unecrypted methods, t
 <a name="ud">
 ###3. Uploading data
 </a>
-Both encrypted and regular data can be uploaded in the same fashion. Assuming you have Elasticsearch running in local on your server, then by running the script _upload.sh_ [es_basic_encryption/regular_encyrpt/uploadDocuments/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encyrpt/uploadDocuments) you will upload your data.
+Both encrypted and regular data can be uploaded in the same fashion. Assuming you have Elasticsearch running in local on your server, then by running the script _upload.sh_ [es_basic_encryption/regular_encrypt/uploadDocuments/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encrypt/uploadDocuments) you will upload your data.
 
 
 <a name="sd">
@@ -52,7 +52,7 @@ Both encrypted and regular data can be uploaded in the same fashion. Assuming yo
 At this point you have a server with data loaded Elasticsearch running in the background. On the server side you want to run _server.sh_ and _client.sh_ on client from [es_basic_encryption/client_server_connection/](https://github.com/mannyray/es_basic_encryption/tree/master/client_server_connection) with argument types and other details provided in script directory.
 
 **Encryption version**
-Since data is stored in encrypted format on server, then the client has to first encrypt the search word using _translateKey.cc_ from [es_basic_encryption/regular_encyrpt/searchDocuments/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encyrpt/searchDocuments) and then use the cipher text as the search word.
+Since data is stored in encrypted format on server, then the client has to first encrypt the search word using _translateKey.cc_ from [es_basic_encryption/regular_encrypt/searchDocuments/](https://github.com/mannyray/es_basic_encryption/tree/master/regular_encrypt/searchDocuments) and then use the cipher text as the search word.
 
 **Testing search**
 For testing the following data is recorded for each query:
